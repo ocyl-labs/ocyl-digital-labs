@@ -1,48 +1,38 @@
-// script.js
+// Toggle mobile menu
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadProjects();
-});
+if (hamburger) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
 
-// Load project images + titles from JSON and render cards
+// Load project cards from JSON
 async function loadProjects() {
   try {
-    const resp = await fetch("project-images.json");
-    if (!resp.ok) {
-      console.error("Failed to fetch project-images.json:", resp.status, resp.statusText);
-      return;
-    }
-    const projects = await resp.json();
-    const grid = document.querySelector(".projects-grid");
-    if (!grid) {
-      console.error("No element with class .projects-grid found in HTML");
-      return;
-    }
+    const response = await fetch("project-images.json");
+    const projects = await response.json();
+    const grid = document.getElementById("projects-grid");
 
-    Object.entries(projects).forEach(([title, imgPath]) => {
+    projects.forEach(project => {
       const card = document.createElement("div");
       card.className = "project-card";
 
-      const img = document.createElement("img");
-      img.src = imgPath;
-      img.alt = title;
-      img.onerror = () => {
-        console.warn("Image failed to load:", imgPath);
-      };
-
-      const h3 = document.createElement("h3");
-      h3.textContent = title;
-
-      const p = document.createElement("p");
-      p.textContent = title;  // or replace with a description if you have one
-
-      card.appendChild(img);
-      card.appendChild(h3);
-      card.appendChild(p);
+      card.innerHTML = `
+        <img src="assets/project-images/${project.image}" alt="${project.title}">
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${project.progress}%;"></div>
+        </div>
+      `;
 
       grid.appendChild(card);
     });
   } catch (err) {
-    console.error("Error in loadProjects:", err);
+    console.error("Error loading projects:", err);
   }
 }
+
+document.addEventListener("DOMContentLoaded", loadProjects);
