@@ -1,0 +1,128 @@
+[
+    {
+        "name": "Adaptive LLM Chat Interface",
+        "description": "An advanced conversational AI tool using large language models for personalized user interactions.",
+        "progress": 95,
+        "status": "Final completion, about to go live",
+        "image": "https://source.unsplash.com/300x200/?llm,ai"
+    },
+    {
+        "name": "Autonomous Data Processor",
+        "description": "Self-managing system for efficient data handling and real-time analytics.",
+        "progress": 95,
+        "status": "Final completion, about to go live",
+        "image": "https://source.unsplash.com/300x200/?data,processing"
+    },
+    {
+        "name": "AI-Driven Learning Platform",
+        "description": "Adaptive learning app that customizes content based on user progress.",
+        "progress": 95,
+        "status": "Final completion, about to go live",
+        "image": "https://source.unsplash.com/300x200/?learning,ai"
+    },
+    {
+        "name": "New AI Invention: Predictive Analytics Tool",
+        "description": "Innovative system forecasting trends with autonomous AI algorithms.",
+        "progress": 95,
+        "status": "Final completion, about to go live",
+        "image": "https://source.unsplash.com/300x200/?predictive,analytics"
+    },
+    {
+        "name": "High-Tech Website Builder",
+        "description": "AI-powered tool for creating dynamic, user-advantage websites.",
+        "progress": 95,
+        "status": "Final completion, about to go live",
+        "image": "https://source.unsplash.com/300x200/?web,ai"
+    },
+    {
+        "name": "Autonomous System Debugger",
+        "description": "App for automated error logging in complex AI environments.",
+        "progress": 95,
+        "status": "Final completion, about to go live",
+        "image": "https://source.unsplash.com/300x200/?debug,code"
+    },
+    {
+        "name": "Legal AI Compliance Checker",
+        "description": "Tool ensuring regulatory adherence in AI deployments.",
+        "progress": 75,
+        "status": "Legal paperwork and testing",
+        "image": "https://source.unsplash.com/300x200/?legal,ai"
+    },
+    {
+        "name": "Advanced Data Handler",
+        "description": "Secure processing system for large-scale data operations.",
+        "progress": 75,
+        "status": "Legal paperwork and testing",
+        "image": "https://source.unsplash.com/300x200/?data,handler"
+    },
+    {
+        "name": "LLM Integration Kit",
+        "description": "Framework for embedding LLMs into existing apps.",
+        "progress": 75,
+        "status": "Legal paperwork and testing",
+        "image": "https://source.unsplash.com/300x200/?integration,llm"
+    },
+    {
+        "name": "Autonomous App Tester",
+        "description": "AI-based automated testing for mobile and web apps.",
+        "progress": 75,
+        "status": "Legal paperwork and testing",
+        "image": "https://source.unsplash.com/300x200/?testing,ai"
+    },
+    {
+        "name": "AI Bug Finder",
+        "description": "Intelligent scanner for code errors in AI systems.",
+        "progress": 50,
+        "status": "Error logging and bug fixing",
+        "image": "https://source.unsplash.com/300x200/?bug,ai"
+    },
+    {
+        "name": "Adaptive UI Generator",
+        "description": "Tool creating responsive interfaces with AI insights.",
+        "progress": 50,
+        "status": "Error logging and bug fixing",
+        "image": "https://source.unsplash.com/300x200/?ui,design"
+    },
+    {
+        "name": "New Tech: Quantum-Inspired AI",
+        "description": "Experimental system blending quantum concepts with classical AI.",
+        "progress": 50,
+        "status": "Error logging and bug fixing",
+        "image": "https://source.unsplash.com/300x200/?quantum,ai"
+    },
+    {
+        "name": "Data Visualization App",
+        "description": "Interactive tool for AI-generated data insights.",
+        "progress": 50,
+        "status": "Error logging and bug fixing",
+        "image": "https://source.unsplash.com/300x200/?visualization,data"
+    },
+    {
+        "name": "Autonomous Workflow Manager",
+        "description": "System automating multi-step AI processes.",
+        "progress": 50,
+        "status": "Error logging and bug fixing",
+        "image": "https://source.unsplash.com/300x200/?workflow,automation"
+    },
+    {
+        "name": "LLM-Powered Search Engine",
+        "description": "Semantic search tool for enhanced data retrieval.",
+        "progress": 50,
+        "status": "Error logging and bug fixing",
+        "image": "https://source.unsplash.com/300x200/?search,llm"
+    },
+    {
+        "name": "AI Advantage Optimizer",
+        "description": "App fine-tuning AI models for competitive edges.",
+        "progress": 50,
+        "status": "Error logging and bug fixing",
+        "image": "https://source.unsplash.com/300x200/?optimize,ai"
+    },
+    {
+        "name": "High-Tech Collaboration Hub",
+        "description": "Platform for real-time AI-assisted team workflows.",
+        "progress": 50,
+        "status": "Error logging and bug fixing",
+        "image": "https://source.unsplash.com/300x200/?collaboration,tech"
+    }
+]
