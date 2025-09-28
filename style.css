@@ -1,13 +1,15 @@
-/* style.css - Branding: Dark theme with black (#0a0a0a) and vibrant green (#00b140) accents for a modern, tech-forward feel. Muted greens (#228B22) for subtle elements. Clean, sans-serif font (Inter) for readability. */
+/* Updated style.css - Added glowing green highlights (box-shadow), brighter green (#39ff14) for accents, floating animations on cards/text, 3D transforms (perspective, rotate) for depth. Tech images: Use Unsplash free AI/tech placeholders (replace src in HTML). For 4D vibe: Subtle infinite float + glow pulses. */
 
 :root {
     --primary-black: #0a0a0a;
     --accent-green: #00b140;
+    --bright-green: #39ff14; /* Brighter for highlights */
     --secondary-green: #228B22;
     --text-light: #ffffff;
     --text-dark: #333333;
     --bg-light: #f8f9fa;
     --border: #e0e0e0;
+    --glow-green: 0 0 20px #39ff14, 0 0 40px #39ff14; /* Glowing effect */
 }
 
 * {
@@ -22,6 +24,7 @@ body {
     color: var(--text-dark);
     background: var(--primary-black);
     color: var(--text-light);
+    perspective: 1000px; /* 3D depth base */
 }
 
 .container {
@@ -30,7 +33,7 @@ body {
     padding: 0 2rem;
 }
 
-/* Navigation */
+/* Navigation - Add subtle glow on hover */
 .navbar {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
@@ -51,9 +54,10 @@ body {
 }
 
 .logo h1 {
-    color: var(--accent-green);
+    color: var(--bright-green);
     font-size: 1.5rem;
     font-weight: 700;
+    text-shadow: var(--glow-green);
 }
 
 .nav-menu {
@@ -66,11 +70,12 @@ body {
     color: var(--text-light);
     text-decoration: none;
     font-weight: 400;
-    transition: color 0.3s;
+    transition: all 0.3s;
 }
 
 .nav-menu a:hover {
-    color: var(--accent-green);
+    color: var(--bright-green);
+    text-shadow: var(--glow-green);
 }
 
 .hamburger {
@@ -87,7 +92,7 @@ body {
     transition: 0.3s;
 }
 
-/* Hero */
+/* Hero - 3D tilt on hover, floating text */
 .hero {
     background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-green) 100%);
     padding: 150px 2rem 100px;
@@ -95,12 +100,23 @@ body {
     display: flex;
     align-items: center;
     min-height: 100vh;
+    transform-style: preserve-3d;
+}
+
+.hero-content {
+    animation: float 6s ease-in-out infinite; /* Gentle float */
 }
 
 .hero-content h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
     font-weight: 700;
+    transform: rotateX(10deg); /* 3D tilt */
+    transition: transform 0.3s;
+}
+
+.hero-content h2:hover {
+    transform: rotateX(0deg) translateZ(20px);
 }
 
 .hero-content p {
@@ -112,20 +128,23 @@ body {
 }
 
 .cta-button {
-    background: var(--accent-green);
+    background: var(--bright-green);
     color: var(--primary-black);
     padding: 1rem 2rem;
     text-decoration: none;
     border-radius: 5px;
     font-weight: 600;
-    transition: transform 0.3s;
+    transition: all 0.3s;
+    box-shadow: var(--glow-green);
+    animation: pulse-glow 2s infinite alternate;
 }
 
 .cta-button:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateZ(10px);
+    box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
 }
 
-/* Sections */
+/* Sections - General padding */
 section {
     padding: 80px 0;
 }
@@ -134,9 +153,12 @@ h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: var(--accent-green);
+    color: var(--bright-green);
+    text-shadow: var(--glow-green);
+    animation: float 4s ease-in-out infinite;
 }
 
+/* About - Stats with 3D cards */
 .about {
     background: var(--bg-light);
     color: var(--text-dark);
@@ -160,16 +182,24 @@ h2 {
     padding: 2rem;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: var(--glow-green), 0 5px 15px rgba(0,0,0,0.1);
+    transform: rotateY(5deg); /* 3D angle */
+    transition: transform 0.3s;
+    animation: float 5s ease-in-out infinite;
+}
+
+.stat:hover {
+    transform: rotateY(0deg) translateZ(20px);
 }
 
 .stat h3 {
     font-size: 2.5rem;
-    color: var(--accent-green);
+    color: var(--bright-green);
     margin-bottom: 0.5rem;
+    text-shadow: var(--glow-green);
 }
 
-/* Projects */
+/* Projects - Cards with tech images, float + 3D */
 .projects {
     background: var(--primary-black);
 }
@@ -190,17 +220,48 @@ h2 {
     background: rgba(255,255,255,0.05);
     padding: 2rem;
     border-radius: 10px;
-    border-left: 4px solid var(--accent-green);
-    transition: transform 0.3s;
+    border-left: 4px solid var(--bright-green);
+    transition: all 0.3s;
+    box-shadow: var(--glow-green);
+    transform: rotateX(5deg) translateZ(0);
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.project-card:hover::before {
+    left: 100%;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: rotateX(0deg) translateZ(30px) scale(1.02);
+    box-shadow: 0 0 40px #39ff14, 0 0 80px #39ff14;
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(var(--glow-green));
 }
 
 .project-card h3 {
-    color: var(--accent-green);
+    color: var(--bright-green);
     margin-bottom: 1rem;
+    text-shadow: var(--glow-green);
 }
 
 .progress-bar {
@@ -214,12 +275,13 @@ h2 {
 
 .progress-fill {
     height: 100%;
-    background: var(--accent-green);
+    background: linear-gradient(90deg, var(--accent-green), var(--bright-green));
     transition: width 0.3s;
     border-radius: 5px;
+    box-shadow: var(--glow-green);
 }
 
-/* Services */
+/* Services - 3D cards with float */
 .services {
     background: var(--bg-light);
     color: var(--text-dark);
@@ -236,15 +298,23 @@ h2 {
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: var(--glow-green), 0 5px 15px rgba(0,0,0,0.1);
+    transform: rotateY(-5deg);
+    transition: transform 0.3s;
+    animation: float 4s ease-in-out infinite reverse;
+}
+
+.service-card:hover {
+    transform: rotateY(0deg) translateZ(20px);
 }
 
 .service-card h3 {
-    color: var(--accent-green);
+    color: var(--bright-green);
     margin-bottom: 1rem;
+    text-shadow: var(--glow-green);
 }
 
-/* Contact */
+/* Contact - Form with glow */
 .contact {
     background: var(--primary-black);
     text-align: center;
@@ -270,21 +340,32 @@ h2 {
     border-radius: 5px;
     background: rgba(255,255,255,0.1);
     color: var(--text-light);
+    transition: box-shadow 0.3s;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    box-shadow: var(--glow-green);
+    outline: none;
 }
 
 #contact-form button {
-    background: var(--accent-green);
+    background: var(--bright-green);
     color: var(--primary-black);
     padding: 1rem;
     border: none;
     border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    box-shadow: var(--glow-green);
+    animation: pulse-glow 2s infinite alternate;
 }
 
 #contact-form button:hover {
     background: var(--secondary-green);
+    transform: translateZ(10px);
+    box-shadow: 0 0 30px #39ff14;
 }
 
 /* Footer */
@@ -296,16 +377,25 @@ footer {
 }
 
 footer a {
-    color: var(--accent-green);
+    color: var(--bright-green);
     text-decoration: none;
+    text-shadow: var(--glow-green);
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
+/* Animations - Float for 4D illusion, pulse for glow */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotateX(5deg); }
+    50% { transform: translateY(-10px) rotateX(5deg); }
+}
 
+@keyframes pulse-glow {
+    0% { box-shadow: var(--glow-green); }
+    100% { box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -317,16 +407,8 @@ footer a {
         transition: 0.3s;
         padding: 2rem 0;
     }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .hero-content h2 {
-        font-size: 2rem;
-    }
-
-    section {
-        padding: 60px 0;
-    }
+    .nav-menu.active { left: 0; }
+    .hero-content h2 { font-size: 2rem; }
+    section { padding: 60px 0; }
+    .stat, .service-card, .project-card { transform: none; animation: none; } /* Simplify mobile */
 }
