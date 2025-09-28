@@ -408,3 +408,19 @@ footer a {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* Subtle shadow for pop */
     white-space: nowrap; /* Prevents button text cutoff on resize */
 }
+/* Hero heading visibility fix - white color, no 3D tilt, black shadow for contrast */
+.hero-content h2 {
+    color: var(--text-light) !important; /* Override to white */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important; /* Black shadow prevents blend */
+    transform: none !important; /* Remove rotate to avoid clip/cutoff */
+    position: relative;
+    z-index: 2;
+    font-size: 2.8rem; /* Slight size tweak for mobile safety */
+}
+
+/* Ensure no cutoff on paragraph */
+.hero-content p {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+}
