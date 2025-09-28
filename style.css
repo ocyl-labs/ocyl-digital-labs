@@ -5,17 +5,11 @@
     --bright-green: #39ff14;
     --secondary-green: #228B22;
     --text-light: #ffffff;
-    --text-dark: #333333;
-    --bg-light: #f8f9fa;
     --border: #e0e0e0;
     --glow-green: 0 0 20px #39ff14, 0 0 40px #39ff14;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -25,11 +19,7 @@ body {
     perspective: 1000px;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
 .navbar {
     background: rgba(10, 10, 10, 0.95);
@@ -140,9 +130,7 @@ body {
     box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
 }
 
-section {
-    padding: 80px 0;
-}
+section { padding: 80px 0; }
 
 h2 {
     text-align: center;
@@ -195,9 +183,7 @@ h2 {
     text-shadow: var(--glow-green);
 }
 
-.stat p {
-    color: var(--text-light);
-}
+.stat p { color: var(--text-light); }
 
 .projects {
     background: var(--primary-black);
@@ -265,9 +251,7 @@ h2 {
     text-shadow: var(--glow-green);
 }
 
-.project-card p {
-    color: var(--text-light);
-}
+.project-card p { color: var(--text-light); }
 
 .progress-bar {
     width: 100%;
@@ -314,9 +298,7 @@ h2 {
     text-shadow: var(--glow-green);
 }
 
-.service-card p {
-    color: var(--text-light);
-}
+.service-card p { color: var(--text-light); }
 
 .contact {
     background: var(--primary-black);
