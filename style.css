@@ -447,3 +447,20 @@ footer a {
     padding: 0.5rem;
     background: rgba(0, 0, 0, 0.4); /* Backdrop if needed */
 }
+/* Hero h2 visibility fix: White text, no clip/blend, locked to other styles */
+.hero-content h2 {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1) !important; /* Heavy black shadow vs. gradient */
+    transform: none !important; /* Eliminate rotateX clipping */
+    animation: none !important; /* No float on h2 (content floats below) */
+    position: relative;
+    z-index: 5;
+    background: rgba(10, 10, 10, 0.7); /* Optional dark backdrop box */
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0 auto 1rem;
+    font-size: 2.8rem;
+    line-height: 1.1;
+    white-space: normal; /* Prevent any wrap cutoff */
+}
