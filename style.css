@@ -99,28 +99,27 @@ body {
     transform-style: preserve-3d;
 }
 
-.hero-content {
-    animation: float 6s ease-in-out infinite;
-}
-
 .hero-content h2 {
+    font-family: 'Orbitron', sans-serif;
     font-size: 3rem;
     margin-bottom: 1rem;
-    font-weight: 700;
-    transform: rotateX(10deg);
-    transition: transform 0.3s;
-}
-
-.hero-content h2:hover {
-    transform: rotateX(0deg) translateZ(20px);
+    font-weight: 600;
+    color: var(--bright-green);
+    text-shadow: var(--glow-green);
+    animation: floatPulse 6s ease-in-out infinite;
+    transform: none;
 }
 
 .hero-content p {
+    font-family: 'Orbitron', sans-serif;
     font-size: 1.2rem;
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    color: var(--text-light);
+    text-shadow: 0 0 10px rgba(57,255,20,0.5);
+    animation: floatPulse 8s ease-in-out infinite;
 }
 
 .cta-button {
@@ -150,7 +149,8 @@ h2 {
     margin-bottom: 2rem;
     color: var(--bright-green);
     text-shadow: var(--glow-green);
-    animation: float 4s ease-in-out infinite;
+    animation: floatPulse 4s ease-in-out infinite;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .about, .services {
@@ -263,6 +263,7 @@ h2 {
     color: var(--bright-green);
     margin-bottom: 1rem;
     text-shadow: var(--glow-green);
+    font-family: 'Orbitron', sans-serif;
 }
 
 .project-card p {
@@ -312,6 +313,7 @@ h2 {
     color: var(--bright-green);
     margin-bottom: 1rem;
     text-shadow: var(--glow-green);
+    font-family: 'Orbitron', sans-serif;
 }
 
 .service-card p {
@@ -389,6 +391,11 @@ footer a {
 @keyframes float {
     0%, 100% { transform: translateY(0px) rotateX(5deg); }
     50% { transform: translateY(-10px) rotateX(5deg); }
+}
+
+@keyframes floatPulse {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.05); }
 }
 
 @keyframes pulse-glow {
