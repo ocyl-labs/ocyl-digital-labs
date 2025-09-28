@@ -1,64 +1,48 @@
-// script.js - Complete updated version: Handles nav, projects with images (from JSON or fallback), form. Assumes projects.json exists; fallback shows samples if missing.
+// script.js
 
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+document.addEventListener("DOMContentLoaded", () => {
+  loadProjects();
 });
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-        navMenu.classList.remove('active');
-    });
-});
-
+// Load project images + titles from JSON and render cards
 async function loadProjects() {
-    try {
-        const response = await fetch('projects.json');
-        const projects = await response.json();
-        const grid = document.getElementById('projects-grid');
-        grid.innerHTML = projects.map(project => `
-            <div class="project-card">
-                <img src="${project.image || 'https://source.unsplash.com/300x200/?ai,abstract'}" alt="${project.name}">
-                <h3>${project.name}</h3>
-                <p>${project.description}</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: ${project.progress}%"></div>
-                </div>
-                <p>Progress: ${project.progress}% - ${project.status}</p>
-            </div>
-        `).join('');
-    } catch (error) {
-        console.error('Error loading projects:', error);
-        document.getElementById('projects-grid').innerHTML = `
-            <div class="project-card">
-                <img src="https://source.unsplash.com/300x200/?ai,tech" alt="Sample Project">
-                <h3>Sample AI Tool</h3>
-                <p>A high-tech adaptive learning app in development.</p>
-                <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
-                <p>Progress: 95% - Final Completion</p>
-            </div>
-            <div class="project-card">
-                <img src="https://source.unsplash.com/300x200/?neural,network" alt="Sample Project">
-                <h3>Sample Autonomous System</h3>
-                <p>AI-driven data processor with autonomous features.</p>
-                <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
-                <p>Progress: 75% - Legal & Testing</p>
-            </div>
-        `;
+  try {
+    const resp = await fetch("project-images.json");
+    if (!resp.ok) {
+      console.error("Failed to fetch project-images.json:", resp.status, resp.statusText);
+      return;
     }
+    const projects = await resp.json();
+    const grid = document.querySelector(".projects-grid");
+    if (!grid) {
+      console.error("No element with class .projects-grid found in HTML");
+      return;
+    }
+
+    Object.entries(projects).forEach(([title, imgPath]) => {
+      const card = document.createElement("div");
+      card.className = "project-card";
+
+      const img = document.createElement("img");
+      img.src = imgPath;
+      img.alt = title;
+      img.onerror = () => {
+        console.warn("Image failed to load:", imgPath);
+      };
+
+      const h3 = document.createElement("h3");
+      h3.textContent = title;
+
+      const p = document.createElement("p");
+      p.textContent = title;  // or replace with a description if you have one
+
+      card.appendChild(img);
+      card.appendChild(h3);
+      card.appendChild(p);
+
+      grid.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Error in loadProjects:", err);
+  }
 }
-
-document.getElementById('contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you for your message! We\'ll get back to you soon.');
-    e.target.reset();
-});
-
-document.addEventListener('DOMContentLoaded', loadProjects);
