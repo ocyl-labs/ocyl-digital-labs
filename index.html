@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OCYL Digital Labs</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Use relative path because style.css is in root -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo">
@@ -31,22 +28,23 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-content">
       <h2>Pioneering the Future of AI</h2>
       <p>
-        OCYL Digital Labs, a division of OCYL, LLC, is at the forefront of adaptive learning, large language models (LLM), advanced AI systems, and autonomous technologies. With years of R&D, we're inventing groundbreaking tools that empower users with unmatched advantages.
+        OCYL Digital Labs, a division of OCYL, LLC, is at the forefront of adaptive learning, large language models (LLM),
+        advanced AI systems, and autonomous technologies. With years of R&D, we're inventing groundbreaking tools that
+        empower users with unmatched advantages.
       </p>
       <a href="#projects" class="cta-button">Explore Our Projects</a>
     </div>
   </section>
 
-  <!-- About Section -->
   <section class="about" id="about">
     <h2>About Us</h2>
     <p>
-      We are innovators, creators, and problem-solvers, pushing the boundaries of AI and technology. Our mission is to empower individuals and organizations with tools that make the future more intelligent and adaptive.
+      We are innovators, creators, and problem-solvers, pushing the boundaries of AI and technology. Our mission is
+      to empower individuals and organizations with tools that make the future more intelligent and adaptive.
     </p>
     <div class="stats-grid">
       <div class="stat">
@@ -64,33 +62,14 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
   <section class="projects" id="projects">
     <h2>Our Projects</h2>
-    <p>Discover some of the cutting-edge work we're building at OCYL Digital Labs.</p>
+    <p>Discover some of the cutting-edge work we’re building at OCYL Digital Labs.</p>
     <div class="projects-grid">
-      <div class="project-card">
-        <img src="project-images/project1.jpg" alt="Project 1">
-        <h3>Adaptive AI Learning</h3>
-        <p>A system that evolves with the learner, providing truly personalized education experiences.</p>
-        <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
-      </div>
-      <div class="project-card">
-        <img src="project-images/project2.jpg" alt="Project 2">
-        <h3>LLM Research Tools</h3>
-        <p>Harnessing the power of large language models to redefine business and creativity.</p>
-        <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
-      </div>
-      <div class="project-card">
-        <img src="project-images/project3.jpg" alt="Project 3">
-        <h3>Autonomous Systems</h3>
-        <p>Building intelligent agents capable of decision-making with minimal human intervention.</p>
-        <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
-      </div>
+      <!-- Example project card; actual cards will populate dynamically from JSON -->
     </div>
   </section>
 
-  <!-- Services Section -->
   <section class="services" id="services">
     <h2>Services</h2>
     <div class="services-grid">
@@ -109,30 +88,54 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
     <p>Have a project in mind? Let’s connect and bring your vision to life.</p>
     <form id="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
       <textarea rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 OCYL Digital Labs. All Rights Reserved. | <a href="#home">Back to top</a></p>
+    <p>
+      &copy; 2025 OCYL Digital Labs. All Rights Reserved. | <a href="#home">Back to top</a>
+    </p>
   </footer>
 
-  <!-- Script for mobile menu -->
   <script>
+    // Mobile hamburger toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+    }
+
+    // Load projects dynamically
+    async function loadProjects() {
+      try {
+        const response = await fetch('project-images.json');
+        const projects = await response.json();
+        const container = document.querySelector('.projects-grid');
+        for (const [title, imgPath] of Object.entries(projects)) {
+          const card = document.createElement('div');
+          card.className = 'project-card';
+          card.innerHTML = `
+            <img src="${imgPath}" alt="${title}" />
+            <h3>${title}</h3>
+            <p>${title}</p>
+          `;
+          container.appendChild(card);
+        }
+      } catch (err) {
+        console.error('Failed to load projects:', err);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', loadProjects);
   </script>
 </body>
 </html>
