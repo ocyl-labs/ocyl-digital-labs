@@ -129,18 +129,19 @@ h1, h2, h3 {
     transform: rotateX(0deg) translateZ(20px);
 }
 
-/* -------- Fix for that chaotic paragraph -------- */
+/* Target that floating paragraph specifically */
 .hero-content p {
-    font-family: 'Inter', sans-serif;           /* switch to Inter (clean) */
-    font-weight: 400;
-    font-size: 1.2rem;
-    letter-spacing: 0.5px;
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-    color: var(--text-light);
-    text-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
-    animation: none;   /* Remove or reduce float/pulse on this paragraph */
-    transform: none !important;
+  font-family: 'Inter', sans-serif;       /* A clean, readable font */
+  font-weight: 400;
+  font-size: 1.25rem;                      /* Slightly larger for readability */
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  max-width: 640px;                        /* prevent it from stretching too wide */
+  margin: 0 auto 2rem auto;
+  color: var(--text-light);
+  text-shadow: 0 0 6px rgba(57,255,20,0.4);  /* subtle glow, lighter */
+  animation: none;                         /* stop floating + pulsing if applied */
+  transform: none !important;             /* cancel conflicting transforms */
 }
 
 /* Button, sections, etc. (your existing styles) */
