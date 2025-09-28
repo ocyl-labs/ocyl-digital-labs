@@ -1,107 +1,17 @@
 [
-    {
-        "name": "Adaptive LLM Chat Interface",
-        "description": "Advanced conversational AI using LLMs for personalized interactions.",
-        "progress": 95,
-        "status": "Final completion, about to go live",
-        "image": "https://source.unsplash.com/300x200/?llm,ai"
-    },
-    {
-        "name": "Autonomous Data Processor",
-        "description": "Self-managing system for efficient data handling.",
-        "progress": 95,
-        "status": "Final completion, about to go live",
-        "image": "https://source.unsplash.com/300x200/?data,processing"
-    },
-    {
-        "name": "AI-Driven Learning Platform",
-        "description": "Adaptive app customizing content based on user progress.",
-        "progress": 95,
-        "status": "Final completion, about to go live",
-        "image": "https://source.unsplash.com/300x200/?learning,ai"
-    },
-    {
-        "name": "Predictive Analytics Tool",
-        "description": "Forecasting trends with autonomous AI algorithms.",
-        "progress": 95,
-        "status": "Final completion, about to go live",
-        "image": "https://source.unsplash.com/300x200/?predictive,analytics"
-    },
-    {
-        "name": "High-Tech Website Builder",
-        "description": "AI-powered tool for dynamic websites.",
-        "progress": 95,
-        "status": "Final completion, about to go live",
-        "image": "https://source.unsplash.com/300x200/?web,ai"
-    },
-    {
-        "name": "Autonomous System Debugger",
-        "description": "Automated error logging for AI environments.",
-        "progress": 95,
-        "status": "Final completion, about to go live",
-        "image": "https://source.unsplash.com/300x200/?debug,code"
-    },
-    {
-        "name": "Legal AI Compliance Checker",
-        "description": "Ensuring regulatory adherence in AI.",
-        "progress": 75,
-        "status": "Legal paperwork and testing",
-        "image": "https://source.unsplash.com/300x200/?legal,ai"
-    },
-    {
-        "name": "Advanced Data Handler",
-        "description": "Secure processing for large-scale data.",
-        "progress": 75,
-        "status": "Legal paperwork and testing",
-        "image": "https://source.unsplash.com/300x200/?data,handler"
-    },
-    {
-        "name": "LLM Integration Kit",
-        "description": "Framework for embedding LLMs into apps.",
-        "progress": 75,
-        "status": "Legal paperwork and testing",
-        "image": "https://source.unsplash.com/300x200/?integration,llm"
-    },
-    {
-        "name": "Autonomous App Tester",
-        "description": "AI-based automated testing for apps.",
-        "progress": 75,
-        "status": "Legal paperwork and testing",
-        "image": "https://source.unsplash.com/300x200/?testing,ai"
-    },
-    {
-        "name": "AI Bug Finder",
-        "description": "Scanner for code errors in AI systems.",
-        "progress": 50,
-        "status": "Error logging and bug fixing",
-        "image": "https://source.unsplash.com/300x200/?bug,ai"
-    },
-    {
-        "name": "Adaptive UI Generator",
-        "description": "Creating responsive interfaces with AI.",
-        "progress": 50,
-        "status": "Error logging and bug fixing",
-        "image": "https://source.unsplash.com/300x200/?ui,design"
-    },
-    {
-        "name": "Quantum-Inspired AI",
-        "description": "Blending quantum concepts with classical AI.",
-        "progress": 50,
-        "status": "Error logging and bug fixing",
-        "image": "https://source.unsplash.com/300x200/?quantum,ai"
-    },
-    {
-        "name": "Data Visualization App",
-        "description": "Interactive tool for AI data insights.",
-        "progress": 50,
-        "status": "Error logging and bug fixing",
-        "image": "https://source.unsplash.com/300x200/?visualization,data"
-    },
-    {
-        "name": "Autonomous Workflow Manager",
-        "description": "Automating multi-step AI processes.",
-        "progress": 50,
-        "status": "Error logging and bug fixing",
-        "image": "https://source.unsplash.com/300x200/?workflow,automation"
-    }
+  {"title":"Adaptive LLM Chat Interface","description":"Next-gen conversational interface with adaptive responses.","image":"adaptive-llm-chat-interface.jpg","progress":85},
+  {"title":"Autonomous Data Processor","description":"Self-managing pipelines for real-time data processing.","image":"autonomous-data-processor.jpg","progress":75},
+  {"title":"AI-Driven Learning Platform","description":"Personalized adaptive learning systems.","image":"ai-driven-learning-platform.jpg","progress":90},
+  {"title":"Predictive Analytics Tool","description":"Forecasting and decision-support tools.","image":"predictive-analytics-tool.jpg","progress":70},
+  {"title":"High-Tech Website Builder","description":"AI-assisted website creation platform.","image":"high-tech-website-builder.jpg","progress":60},
+  {"title":"Autonomous System Debugger","description":"Automated debugging for autonomous stacks.","image":"autonomous-system-debugger.jpg","progress":65},
+  {"title":"Legal AI Compliance Checker","description":"Automated compliance verification for AI systems.","image":"legal-ai-compliance-checker.jpg","progress":80},
+  {"title":"Advanced Data Handler","description":"Smart data handling & storage orchestration.","image":"advanced-data-handler.jpg","progress":88},
+  {"title":"LLM Integration Kit","description":"Toolkit for integrating LLMs into apps.","image":"llm-integration-kit.jpg","progress":92},
+  {"title":"Autonomous App Tester","description":"Autonomous testing for mobile and web apps.","image":"autonomous-app-tester.jpg","progress":68},
+  {"title":"AI Bug Finder","description":"Automated detection and triage of code issues.","image":"ai-bug-finder.jpg","progress":73},
+  {"title":"Adaptive UI Generator","description":"Generative UI builder that adapts to users.","image":"adaptive-ui-generator.jpg","progress":86},
+  {"title":"Quantum-Inspired AI","description":"Research into quantum-inspired model architectures.","image":"quantum-inspired-ai.jpg","progress":55},
+  {"title":"Data Visualization App","description":"Interactive visualizations for complex datasets.","image":"data-visualization-app.jpg","progress":82},
+  {"title":"High-Tech Collaboration Hub","description":"A futuristic hub for team collaboration and AI tooling.","image":"high-tech-collaboration-hub.jpg","progress":87}
 ]
