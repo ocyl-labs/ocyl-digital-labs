@@ -435,3 +435,15 @@ footer a {
     margin: 0 auto;
     max-width: 80%;
 }
+/* Hero h2 visibility fix - disable animation/tilt, ensure full visibility */
+.hero-content h2 {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+    transform: none !important; /* Stop rotateX clip */
+    animation: none !important; /* Pause float on h2 only */
+    position: relative;
+    z-index: 10;
+    margin-bottom: 1.5rem; /* Space from p */
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.4); /* Backdrop if needed */
+}
