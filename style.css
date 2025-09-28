@@ -1,15 +1,14 @@
-/* Updated style.css - Added glowing green highlights (box-shadow), brighter green (#39ff14) for accents, floating animations on cards/text, 3D transforms (perspective, rotate) for depth. Tech images: Use Unsplash free AI/tech placeholders (replace src in HTML). For 4D vibe: Subtle infinite float + glow pulses. */
-
 :root {
     --primary-black: #0a0a0a;
+    --dark-bg: #1a1a1a;
     --accent-green: #00b140;
-    --bright-green: #39ff14; /* Brighter for highlights */
+    --bright-green: #39ff14;
     --secondary-green: #228B22;
     --text-light: #ffffff;
     --text-dark: #333333;
     --bg-light: #f8f9fa;
     --border: #e0e0e0;
-    --glow-green: 0 0 20px #39ff14, 0 0 40px #39ff14; /* Glowing effect */
+    --glow-green: 0 0 20px #39ff14, 0 0 40px #39ff14;
 }
 
 * {
@@ -21,10 +20,9 @@
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: var(--text-dark);
-    background: var(--primary-black);
     color: var(--text-light);
-    perspective: 1000px; /* 3D depth base */
+    background: var(--primary-black);
+    perspective: 1000px;
 }
 
 .container {
@@ -33,7 +31,6 @@ body {
     padding: 0 2rem;
 }
 
-/* Navigation - Add subtle glow on hover */
 .navbar {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
@@ -92,7 +89,6 @@ body {
     transition: 0.3s;
 }
 
-/* Hero - 3D tilt on hover, floating text */
 .hero {
     background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-green) 100%);
     padding: 150px 2rem 100px;
@@ -104,14 +100,14 @@ body {
 }
 
 .hero-content {
-    animation: float 6s ease-in-out infinite; /* Gentle float */
+    animation: float 6s ease-in-out infinite;
 }
 
 .hero-content h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
     font-weight: 700;
-    transform: rotateX(10deg); /* 3D tilt */
+    transform: rotateX(10deg);
     transition: transform 0.3s;
 }
 
@@ -144,7 +140,6 @@ body {
     box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14;
 }
 
-/* Sections - General padding */
 section {
     padding: 80px 0;
 }
@@ -158,10 +153,9 @@ h2 {
     animation: float 4s ease-in-out infinite;
 }
 
-/* About - Stats with 3D cards */
-.about {
-    background: var(--bg-light);
-    color: var(--text-dark);
+.about, .services {
+    background: var(--dark-bg);
+    color: var(--text-light);
 }
 
 .about p {
@@ -169,6 +163,7 @@ h2 {
     font-size: 1.1rem;
     max-width: 800px;
     margin: 0 auto 3rem;
+    color: var(--text-light);
 }
 
 .stats-grid {
@@ -180,10 +175,11 @@ h2 {
 .stat {
     text-align: center;
     padding: 2rem;
-    background: white;
+    background: rgba(255,255,255,0.05);
     border-radius: 10px;
     box-shadow: var(--glow-green), 0 5px 15px rgba(0,0,0,0.1);
-    transform: rotateY(5deg); /* 3D angle */
+    color: var(--text-light);
+    transform: rotateY(5deg);
     transition: transform 0.3s;
     animation: float 5s ease-in-out infinite;
 }
@@ -199,7 +195,10 @@ h2 {
     text-shadow: var(--glow-green);
 }
 
-/* Projects - Cards with tech images, float + 3D */
+.stat p {
+    color: var(--text-light);
+}
+
 .projects {
     background: var(--primary-black);
 }
@@ -208,6 +207,7 @@ h2 {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 1.1rem;
+    color: var(--text-light);
 }
 
 .projects-grid {
@@ -227,6 +227,7 @@ h2 {
     animation: float 3s ease-in-out infinite;
     position: relative;
     overflow: hidden;
+    color: var(--text-light);
 }
 
 .project-card::before {
@@ -264,6 +265,10 @@ h2 {
     text-shadow: var(--glow-green);
 }
 
+.project-card p {
+    color: var(--text-light);
+}
+
 .progress-bar {
     width: 100%;
     height: 10px;
@@ -281,12 +286,6 @@ h2 {
     box-shadow: var(--glow-green);
 }
 
-/* Services - 3D cards with float */
-.services {
-    background: var(--bg-light);
-    color: var(--text-dark);
-}
-
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -294,7 +293,7 @@ h2 {
 }
 
 .service-card {
-    background: white;
+    background: rgba(255,255,255,0.05);
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
@@ -302,6 +301,7 @@ h2 {
     transform: rotateY(-5deg);
     transition: transform 0.3s;
     animation: float 4s ease-in-out infinite reverse;
+    color: var(--text-light);
 }
 
 .service-card:hover {
@@ -314,7 +314,10 @@ h2 {
     text-shadow: var(--glow-green);
 }
 
-/* Contact - Form with glow */
+.service-card p {
+    color: var(--text-light);
+}
+
 .contact {
     background: var(--primary-black);
     text-align: center;
@@ -323,6 +326,7 @@ h2 {
 .contact p {
     margin-bottom: 3rem;
     font-size: 1.1rem;
+    color: var(--text-light);
 }
 
 #contact-form {
@@ -368,12 +372,12 @@ h2 {
     box-shadow: 0 0 30px #39ff14;
 }
 
-/* Footer */
 footer {
     background: var(--primary-black);
     padding: 2rem 0;
     text-align: center;
     border-top: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-light);
 }
 
 footer a {
@@ -382,7 +386,6 @@ footer a {
     text-shadow: var(--glow-green);
 }
 
-/* Animations - Float for 4D illusion, pulse for glow */
 @keyframes float {
     0%, 100% { transform: translateY(0px) rotateX(5deg); }
     50% { transform: translateY(-10px) rotateX(5deg); }
@@ -393,7 +396,6 @@ footer a {
     100% { box-shadow: 0 0 30px #39ff14, 0 0 60px #39ff14; }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
     .hamburger { display: flex; }
     .nav-menu {
@@ -410,5 +412,5 @@ footer a {
     .nav-menu.active { left: 0; }
     .hero-content h2 { font-size: 2rem; }
     section { padding: 60px 0; }
-    .stat, .service-card, .project-card { transform: none; animation: none; } /* Simplify mobile */
+    .stat, .service-card, .project-card { transform: none; animation: none; }
 }
