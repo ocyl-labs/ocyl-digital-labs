@@ -424,3 +424,14 @@ footer a {
     overflow: visible;
     text-overflow: unset;
 }
+.hero-content h2 {
+    color: #ffffff !important; /* White text */
+    background: rgba(0,0,0,0.3); /* Semi-black backdrop for contrast */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9) !important;
+    transform: none !important; /* No clip */
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+}
