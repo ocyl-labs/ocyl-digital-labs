@@ -1,112 +1,64 @@
-// projects.json - Edit this file in your GitHub repo to update projects easily. Add/remove entries as needed. Structure: array of objects with name, description, progress (0-100), status (string).
+// script.js - Complete updated version: Handles nav, projects with images (from JSON or fallback), form. Assumes projects.json exists; fallback shows samples if missing.
 
-[
-    {
-        "name": "Adaptive LLM Chat Interface",
-        "description": "An advanced conversational AI tool using large language models for personalized user interactions.",
-        "progress": 95,
-        "status": "Final completion, about to go live"
-    },
-    {
-        "name": "Autonomous Data Processor",
-        "description": "Self-managing system for efficient data handling and real-time analytics.",
-        "progress": 95,
-        "status": "Final completion, about to go live"
-    },
-    {
-        "name": "AI-Driven Learning Platform",
-        "description": "Adaptive learning app that customizes content based on user progress.",
-        "progress": 95,
-        "status": "Final completion, about to go live"
-    },
-    {
-        "name": "New AI Invention: Predictive Analytics Tool",
-        "description": "Innovative system forecasting trends with autonomous AI algorithms.",
-        "progress": 95,
-        "status": "Final completion, about to go live"
-    },
-    {
-        "name": "High-Tech Website Builder",
-        "description": "AI-powered tool for creating dynamic, user-advantage websites.",
-        "progress": 95,
-        "status": "Final completion, about to go live"
-    },
-    {
-        "name": "Autonomous System Debugger",
-        "description": "App for automated error logging in complex AI environments.",
-        "progress": 95,
-        "status": "Final completion, about to go live"
-    },
-    {
-        "name": "Legal AI Compliance Checker",
-        "description": "Tool ensuring regulatory adherence in AI deployments.",
-        "progress": 75,
-        "status": "Legal paperwork and testing"
-    },
-    {
-        "name": "Advanced Data Handler",
-        "description": "Secure processing system for large-scale data operations.",
-        "progress": 75,
-        "status": "Legal paperwork and testing"
-    },
-    {
-        "name": "LLM Integration Kit",
-        "description": "Framework for embedding LLMs into existing apps.",
-        "progress": 75,
-        "status": "Legal paperwork and testing"
-    },
-    {
-        "name": "Autonomous App Tester",
-        "description": "AI-based automated testing for mobile and web apps.",
-        "progress": 75,
-        "status": "Legal paperwork and testing"
-    },
-    {
-        "name": "AI Bug Finder",
-        "description": "Intelligent scanner for code errors in AI systems.",
-        "progress": 50,
-        "status": "Error logging and bug fixing"
-    },
-    {
-        "name": "Adaptive UI Generator",
-        "description": "Tool creating responsive interfaces with AI insights.",
-        "progress": 50,
-        "status": "Error logging and bug fixing"
-    },
-    {
-        "name": "New Tech: Quantum-Inspired AI",
-        "description": "Experimental system blending quantum concepts with classical AI.",
-        "progress": 50,
-        "status": "Error logging and bug fixing"
-    },
-    {
-        "name": "Data Visualization App",
-        "description": "Interactive tool for AI-generated data insights.",
-        "progress": 50,
-        "status": "Error logging and bug fixing"
-    },
-    {
-        "name": "Autonomous Workflow Manager",
-        "description": "System automating multi-step AI processes.",
-        "progress": 50,
-        "status": "Error logging and bug fixing"
-    },
-    {
-        "name": "LLM-Powered Search Engine",
-        "description": "Semantic search tool for enhanced data retrieval.",
-        "progress": 50,
-        "status": "Error logging and bug fixing"
-    },
-    {
-        "name": "AI Advantage Optimizer",
-        "description": "App fine-tuning AI models for competitive edges.",
-        "progress": 50,
-        "status": "Error logging and bug fixing"
-    },
-    {
-        "name": "High-Tech Collaboration Hub",
-        "description": "Platform for real-time AI-assisted team workflows.",
-        "progress": 50,
-        "status": "Error logging and bug fixing"
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+        navMenu.classList.remove('active');
+    });
+});
+
+async function loadProjects() {
+    try {
+        const response = await fetch('projects.json');
+        const projects = await response.json();
+        const grid = document.getElementById('projects-grid');
+        grid.innerHTML = projects.map(project => `
+            <div class="project-card">
+                <img src="${project.image || 'https://source.unsplash.com/300x200/?ai,abstract'}" alt="${project.name}">
+                <h3>${project.name}</h3>
+                <p>${project.description}</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${project.progress}%"></div>
+                </div>
+                <p>Progress: ${project.progress}% - ${project.status}</p>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Error loading projects:', error);
+        document.getElementById('projects-grid').innerHTML = `
+            <div class="project-card">
+                <img src="https://source.unsplash.com/300x200/?ai,tech" alt="Sample Project">
+                <h3>Sample AI Tool</h3>
+                <p>A high-tech adaptive learning app in development.</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
+                <p>Progress: 95% - Final Completion</p>
+            </div>
+            <div class="project-card">
+                <img src="https://source.unsplash.com/300x200/?neural,network" alt="Sample Project">
+                <h3>Sample Autonomous System</h3>
+                <p>AI-driven data processor with autonomous features.</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                <p>Progress: 75% - Legal & Testing</p>
+            </div>
+        `;
     }
-]
+}
+
+document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for your message! We\'ll get back to you soon.');
+    e.target.reset();
+});
+
+document.addEventListener('DOMContentLoaded', loadProjects);
