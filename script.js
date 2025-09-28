@@ -79,14 +79,14 @@
         const card = document.createElement('div');
         card.className = 'project-card';
         card.innerHTML = `
-          <!-- Images removed; use green placeholder div instead -->
+          <!-- Green placeholder with project name -->
           <div class="project-image-placeholder"
                style="background: linear-gradient(135deg, var(--accent-green), var(--bright-green));
-                      height: 200px; border-radius: 5px; margin-bottom: 1rem;
+                      height: 120px; border-radius: 5px; margin-bottom: 1rem;
                       display: flex; align-items: center; justify-content: center;
-                      color: var(--primary-black); font-weight: bold;">
+                      color: var(--primary-black); font-weight: bold; font-size: 1.2rem;">
+            ${escapeHtml(project.name)}
           </div>
-          <h3>${escapeHtml(project.name)}</h3>
           <p>${escapeHtml(project.description || '')}</p>
           <div class="progress-bar">
             <div class="progress-fill" style="width:${Number(project.progress) || 0}%"></div>
