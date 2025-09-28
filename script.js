@@ -72,12 +72,18 @@
       const data = await res.json();
       if (!Array.isArray(data)) throw new Error('projects.json is not an array');
       const grid = document.getElementById(GRID_ID);
-      grid.innerHTML = '';
-      data.forEach(p => {
-        // normalize image path if user provided filename only
-        if (p.image && !p.image.startsWith('http') && !p.image.startsWith('/')) {
-          p.image = `assets/project-images/${p.image}`;
-        }
+      grid.innerHTML = projects.map(project => `
+    <div class="project-card">
+        <!-- Images removed; use green placeholder div instead -->
+        <div class="project-image-placeholder" style="background: linear-gradient(135deg, var(--accent-green), var(--bright-green)); height: 200px; border-radius: 5px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--primary-black); font-weight: bold;"></div>
+        <h3>${project.name}</h3>
+        <p>${project.description}</p>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: ${project.progress}%"></div>
+        </div>
+        <p>Progress: ${project.progress}% - ${project.status}</p>
+    </div>
+`).join('');
         grid.appendChild(createCard(p));
       });
     } catch (err) {
