@@ -1,87 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OCYL Digital Labs</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="project-cards.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCYL Digital Labs - Pioneering Advanced AI & Autonomous Systems</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="OCYL Digital Labs: AI innovations in adaptive learning & autonomous systems. Division of OCYL, LLC.">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo"><h1>OCYL Digital Labs</h1></div>
-      <ul class="nav-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </nav>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>OCYL Digital Labs</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h2>Pioneering the Future of AI</h2>
-      <p>
-        OCYL Digital Labs, a division of OCYL, LLC, is at the forefront of adaptive learning,
-        large language models (LLM), advanced AI systems, and autonomous technologies.
-        With years of R&D, we're inventing groundbreaking tools that empower users
-        with unmatched advantages.
-      </p>
-      <a href="#projects" class="cta-button">Explore Our Projects</a>
-    </div>
-  </section>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Pioneering the Future of AI</h2>
+            <p>OCYL Digital Labs, a division of OCYL, LLC, is at the forefront of adaptive learning, large language models (LLM), advanced AI systems, and autonomous technologies. With years of R&D, we're inventing groundbreaking tools that empower users with unmatched advantages.</p>
+            <a href="#projects" class="cta-button">Explore Our Projects</a>
+        </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>
-      We specialize in AI-driven platforms, combining adaptive learning and
-      automation with practical business tools.
-    </p>
-  </section>
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About OCYL Digital Labs</h2>
+            <p>As a dedicated division of OCYL, LLC, we've spent years in rigorous research and development, pushing the boundaries of new technology in data processing, handling, and high-tech AI solutions. Our 15 active projects span innovative websites, tools, and apps designed to deliver real-world advantages through adaptive learning, LLMs, and autonomous systems.</p>
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3>15</h3>
+                    <p>Active Projects</p>
+                </div>
+                <div class="stat">
+                    <h3>6</h3>
+                    <p>95% Complete & Launching Soon</p>
+                </div>
+                <div class="stat">
+                    <h3>4</h3>
+                    <p>75% Complete (Legal & Testing)</p>
+                </div>
+                <div class="stat">
+                    <h3>9</h3>
+                    <p>50% Complete (Debugging)</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <h2>Our Projects</h2>
-    <p>Explore our active AI development initiatives.</p>
-    <div class="projects-grid">
-      <!-- Dynamically filled by script.js -->
-    </div>
-  </section>
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Current Projects</h2>
+            <p>Our portfolio of high-tech AI digital systems is in active development. Update details easily by editing <code>projects.json</code> in your GitHub repo—no coding required.</p>
+            <div id="projects-grid" class="projects-grid">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
 
-  <!-- Services Section -->
-  <section id="services" class="services">
-    <h2>Services</h2>
-    <div class="services-grid">
-      <div class="service-card"><h3>Custom AI</h3><p>Tailored solutions for unique needs.</p></div>
-      <div class="service-card"><h3>Automation</h3><p>Smart systems to optimize workflows.</p></div>
-      <div class="service-card"><h3>Consulting</h3><p>Expert guidance on AI adoption.</p></div>
-    </div>
-  </section>
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Adaptive Learning Systems</h3>
+                    <p>Intelligent platforms that evolve with user needs, leveraging LLMs for personalized experiences.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Advanced AI & LLMs</h3>
+                    <p>Custom large language models and AI integrations for cutting-edge applications.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Autonomous Systems</h3>
+                    <p>Self-operating tech for automation, from data handling to real-time decision-making.</p>
+                </div>
+                <div class="service-card">
+                    <h3>New Technology Invention</h3>
+                    <p>Innovating proprietary AI systems with focus on data processing and user advantages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>Get in touch to collaborate on AI innovation.</p>
-    <form id="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message"></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>Ready to collaborate on transformative AI solutions? Contact us to discuss partnerships or custom developments.</p>
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 OCYL Digital Labs. All Rights Reserved.</p>
-  </footer>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 OCYL, LLC. All rights reserved. | OCYL Digital Labs Division | <a href="#">Privacy Policy</a></p>
+        </div>
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
