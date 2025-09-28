@@ -1,55 +1,174 @@
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
+/* script.js — load projects.json, render cards, handle form & bg canvas */
+(() => {
+  const PROJECTS_JSON = 'projects.json'; // uses local projects.json (array of objects)
+  const GRID_ID = 'projects-grid';
+  const LOADER_ID = 'projects-loader';
+  const ERROR_ID = 'projects-error';
+  const CANVAS_ID = 'bg-canvas';
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-        navMenu.classList.remove('active');
+  // Mobile nav toggle
+  function initNav() {
+    const btn = document.querySelector('.hamburger');
+    const menu = document.querySelector('.nav-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('active');
     });
-});
+    // smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (ev) => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          ev.preventDefault();
+          target.scrollIntoView({behavior:'smooth',block:'start'});
+          menu.classList.remove('active');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
 
-async function loadProjects() {
+  // Render functions
+  function showLoader(show = true) {
+    const loader = document.getElementById(LOADER_ID);
+    if (!loader) return;
+    loader.style.display = show ? 'flex' : 'none';
+    loader.setAttribute('aria-hidden', String(!show));
+  }
+  function showError(msg) {
+    const el = document.getElementById(ERROR_ID);
+    if (!el) return;
+    el.hidden = false;
+    el.textContent = msg;
+  }
+
+  function createCard(p) {
+    const card = document.createElement('article');
+    card.className = 'project-card';
+    card.innerHTML = `
+      <img src="${p.image}" alt="${escapeHtml(p.title)}" loading="lazy" />
+      <h3>${escapeHtml(p.title)}</h3>
+      <p>${escapeHtml(p.description || '')}</p>
+      <div class="progress-bar" aria-hidden="false">
+        <div class="progress-fill" style="width:${Number(p.progress || 0)}%"></div>
+      </div>
+    `;
+    return card;
+  }
+
+  // Safe text
+  function escapeHtml(s='') {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  // Fetch projects.json and render
+  async function loadProjects() {
+    showLoader(true);
     try {
-        const response = await fetch('projects.json');
-        const projects = await response.json();
-        const grid = document.getElementById('projects-grid');
-        grid.innerHTML = projects.map(project => `
-            <div class="project-card">
-                <img src="${project.image || 'https://source.unsplash.com/300x200/?ai,abstract'}" alt="${project.name}">
-                <h3>${project.name}</h3>
-                <p>${project.description}</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: ${project.progress}%"></div>
-                </div>
-                <p>Progress: ${project.progress}% - ${project.status}</p>
-            </div>
-        `).join('');
-    } catch (error) {
-        console.error('Error loading projects:', error);
-        document.getElementById('projects-grid').innerHTML = `
-            <div class="project-card">
-                <img src="https://source.unsplash.com/300x200/?ai,tech" alt="Sample">
-                <h3>Sample AI Tool</h3>
-                <p>High-tech adaptive learning app.</p>
-                <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
-                <p>Progress: 95% - Final Completion</p>
-            </div>
-        `;
+      const res = await fetch(PROJECTS_JSON, {cache:'no-store'});
+      if (!res.ok) throw new Error(`projects.json fetch failed: ${res.status}`);
+      const data = await res.json();
+      if (!Array.isArray(data)) throw new Error('projects.json is not an array');
+      const grid = document.getElementById(GRID_ID);
+      grid.innerHTML = '';
+      data.forEach(p => {
+        // normalize image path if user provided filename only
+        if (p.image && !p.image.startsWith('http') && !p.image.startsWith('/')) {
+          p.image = `assets/project-images/${p.image}`;
+        }
+        grid.appendChild(createCard(p));
+      });
+    } catch (err) {
+      console.error(err);
+      showError('Could not load projects. Please refresh or check the repository.');
+    } finally {
+      showLoader(false);
     }
-}
+  }
 
-document.getElementById('contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you! We\'ll respond soon.');
-    e.target.reset();
-});
+  // Contact form: default posts to Formspree via form action attribute; we also intercept for nicer UX
+  function initForm() {
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    if (!form) return;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Sending…';
+      const action = form.getAttribute('action');
+      const formData = new FormData(form);
+      try {
+        // If action not set, simply show message (dev fallback)
+        if (!action || action.includes('your-id')) {
+          status.textContent = 'Configure Formspree action URL in index.html to receive messages.';
+          form.reset();
+          return;
+        }
+        const res = await fetch(action, {method:'POST', body: formData, headers: {'Accept':'application/json'}});
+        if (res.ok) {
+          status.textContent = 'Thanks — message sent!';
+          form.reset();
+        } else {
+          const json = await res.json().catch(()=>null);
+          status.textContent = (json && json.error) ? json.error : 'Error sending form';
+        }
+      } catch (err) {
+        console.error(err);
+        status.textContent = 'Network error sending message';
+      }
+    });
+  }
 
-document.addEventListener('DOMContentLoaded', loadProjects);
+  // Lightweight particle background (optional). Keep minimal for performance.
+  function initCanvasBG() {
+    const canvas = document.getElementById(CANVAS_ID);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, raf;
+    const pts = [];
+    function resize() {
+      w = canvas.width = innerWidth;
+      h = canvas.height = innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // init points
+    const count = Math.max(20, Math.floor(w * 0.02));
+    for (let i=0;i<count;i++){
+      pts.push({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        vx: (Math.random()-0.5)*0.3,
+        vy: (Math.random()-0.5)*0.3,
+        r: 0.6 + Math.random()*1.6
+      });
+    }
+
+    function loop(){
+      ctx.clearRect(0,0,w,h);
+      for (const p of pts) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x<0) p.x = w; if (p.x>w) p.x = 0;
+        if (p.y<0) p.y = h; if (p.y>h) p.y = 0;
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(57,255,20,0.08)';
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(loop);
+    }
+    loop();
+  }
+
+  // init on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', () => {
+    initNav();
+    initForm();
+    loadProjects();
+    // init canvas background — optional, comment out if not desired or performance-critical:
+    initCanvasBG();
+  });
+
+})();
