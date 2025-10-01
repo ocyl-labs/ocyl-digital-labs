@@ -87,3 +87,18 @@ footer{padding:2rem 0;background:transparent;border-top:1px solid rgba(255,255,2
   .hamburger{display:inline-block}
   .footer-grid{flex-direction:column;align-items:flex-start}
 }
+/* Logo styles */
+.site-logo {
+  height: 60px;       /* adjust size */
+  margin: 10px;
+  position: relative; /* keeps it above canvas */
+  z-index: 10;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 10;
+}
